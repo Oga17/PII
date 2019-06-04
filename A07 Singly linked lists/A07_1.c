@@ -10,7 +10,7 @@ typedef struct node{         // Self referencing structure
 
 
 char compare_data(const char *data1, const char *data2)    // Optional (using function pointer)
-{
+{                                                          // Const parameters indicates that true values of arguments passed won't be changed
     return strcmp(data1, data2);
 }
 
