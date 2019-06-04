@@ -9,7 +9,7 @@ typedef struct node{
 } NODE;
 
 
-char compare_data(const char *data1, const char *data2)
+char compare_data(const char *data1, const char *data2)    // Optional (using function pointer)
 {
     return strcmp(data1, data2);
 }
@@ -110,7 +110,7 @@ int main()
                 string = (char *)malloc(18 * sizeof(char));
                 scanf("%s", string);
                 if(delete_node(&head, string)) printf(" Node successfully deleted!");
-                else printf(" Node with %s data does not exist!", string);
+                else printf(" Node with data %s does not exist!", string);
             }
             else
                 printf(" Non-existing mode of work!");
@@ -122,7 +122,7 @@ int main()
         else if(c != '0') printf(" Non-existing mode of work - %c .", c);
     }while(c != '0');
 
-    printf("\n KRAJ!\n\n");
+    printf("\n END!\n\n");
 
     return 0;
 }
