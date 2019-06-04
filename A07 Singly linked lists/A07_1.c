@@ -3,9 +3,9 @@
 #include <string.h>
 
 
-typedef struct node{
-            char *data;
-            struct node *next;
+typedef struct node{         // Self referencing structure
+            char *data;          // Data which node holds
+            struct node *next;      // Pointer to next node (used for linking the nodes) 
 } NODE;
 
 
