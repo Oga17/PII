@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-typedef struct node{         // Self referencing structure
+typedef struct node{         // Self referential structure
             char *data;          // Data which node holds
             struct node *next;      // Pointer to next node (used for linking the nodes) 
 } NODE;
