@@ -3,37 +3,35 @@
 
 
 typedef struct node{
-            int data;                  // Podatak koji sadrzi cvor
-            struct node *prev, *next;  // Pokazivaci jednog cvora na njegovog prethodnika i sljedbenika
+            int data;                  //  Data which node holds
+            struct node *prev, *next;    //  Pointers used for linking nodes
 } NODE;
 
 
-void addNode(NODE **phead, NODE **ptail, int data)
+void add_node(NODE **phead, NODE **ptail, int data)
 {
-    NODE *p, *q = (NODE *)malloc(sizeof(NODE));    // *p - Pomocni pokazivac; *q - Novi cvor koji dodajemo
+    NODE *p, *q = (NODE *)malloc(sizeof(NODE));    //  *q - new node, *p - pointer used for finding the last node in list
     q->data = data;
-    q->next = 0;
+    q->prev = q->next = 0;
     if(*phead == 0)
         *phead = *ptail = q;
-    else
+    else                                         
     {
-        for(p = *phead; p->next; p = p->next);
+        for(p = *phead; p->next; p = p->next);     //  In next line p is now pointing to last node in the list
         p->next = q;
         q->prev = p;
         *ptail = q;
     }
 }
 
-void insertNode(NODE **phead, NODE **ptail, int data, int position)  // Ubacivanje novog cvora iza unesene pozicije
+void insert_node(NODE **phead, NODE **ptail, int data, int position)  // Function for inserting a new node at desired position
 {
     NODE *p, *q = (NODE *)malloc(sizeof(NODE));
     q->data = data;
-    int i = 1;
     p = *phead;
-    while(i < position && p != NULL)
+    while(position-- && p != NULL)
     {
         p = p->next;
-        i++;
     }
     if(p->next == 0)
     {
@@ -51,7 +49,7 @@ void insertNode(NODE **phead, NODE **ptail, int data, int position)  // Ubacivan
     }
 }
 
-void printList(NODE **phead)  // Printanje sadrzaja liste
+void print_list(NODE **phead)  
 {
     NODE *p = *phead;
     printf("\n");
@@ -62,7 +60,7 @@ void printList(NODE **phead)  // Printanje sadrzaja liste
     }
 }
 
-void deleteList(NODE **phead, NODE **ptail)
+void delete_list(NODE **phead, NODE **ptail)
 {
     while(*phead)
     {
@@ -85,28 +83,28 @@ int main()
     {
         printf(" Node %d: ", i + 1);
         scanf("%d", &x);
-        addNode(&head, &tail, x);
+        add_node(&head, &tail, x);
     }
 
-    printList(&head);
+    print_list(&head);
 
     printf("\n\n Insert behind node: ");
     scanf("%d", &n);
     printf(" Data: ");
     scanf("%d", &x);
 
-    insertNode(&head, &tail, x, n);
+    insert_node(&head, &tail, x, n);
 
-    printList(&head);
+    print_list(&head);
 
-    printf("\n\n Second last node data: %d", tail->prev->data);  // Mala provjera
+    printf("\n\n Second last node data: %d", tail->prev->data);   //  Performing a little check to see if list is linked properly
     printf("\n\n Last node data: %d", tail->data);
 
-    deleteList(&head, &tail);
+    delete_list(&head, &tail);
 
-    printf("\n\n Content of list after deleting it: ");  // Vrsimo provjeru da li funkcija deleteList uspjesno brise listu
+    printf("\n\n Content of list after deleting it: ");   //  Vrsimo provjeru da li funkcija deleteList uspjesno brise listu
 
-    printList(&head);
+    print_list(&head);
 
     return 0;
 }
