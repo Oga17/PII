@@ -29,9 +29,14 @@ void insert_node(NODE **phead, NODE **ptail, int data, int position)  // Functio
     NODE *p, *q = (NODE *)malloc(sizeof(NODE));
     q->data = data;
     p = *phead;
-    while(position-- && p != NULL)
+    while(--position && p != NULL)
     {
         p = p->next;
+    }
+    if(p == NULL)
+    {
+        printf(" There aren't that many nodes!);
+        return;
     }
     if(p->next == 0)
     {
@@ -75,14 +80,11 @@ int main()
     NODE *head = 0, *tail = 0;
     int x, n;
 
-    printf(" Koliko podataka zelimo da unesemo: ");
-    scanf("%d", &n);
-    printf("\n Unosimo podatke... \n\n");
+    printf(" Number of data we want to store in nodes: "); scanf("%d", &n);
 
     for(int i = 0; i < n; i++)
     {
-        printf(" Node %d: ", i + 1);
-        scanf("%d", &x);
+        printf(" Data%d: ", i + 1); scanf("%d", &x);
         add_node(&head, &tail, x);
     }
 
