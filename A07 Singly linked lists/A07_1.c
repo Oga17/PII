@@ -84,7 +84,7 @@ int main()
 
     do{
         printf("\n ==================================================\n");
-        printf(" Add/insert [D], delete [B], print [P], kraj [0]? "); scanf("\n%c", &c);
+        printf(" Add/insert [D], delete [B], print [P], end [0]? "); scanf("\n%c", &c);
 
         if(c == 'D')
         {
